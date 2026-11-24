@@ -1,24 +1,33 @@
-# Compiled class file
-*.class
+import java.util.*;
 
-# Log file
-*.log
+class Banking {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double balance = 1000;
 
-# BlueJ files
-*.ctxt
+        while (true) {
+            System.out.println(
+                "\n1.Deposit 2.Withdraw 3.Balance 4.Exit");
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+            int choice = sc.nextInt();
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+            if (choice == 1) {
+                System.out.print("Amount: ");
+                double amount = sc.nextDouble();
+                if (amount > 0) balance += amount;
+            } else if (choice == 2) {
+                System.out.print("Amount: ");
+                double amount = sc.nextDouble();
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+                if (amount > 0 && amount <= balance)
+                    balance -= amount;
+                else
+                    System.out.println("Invalid amount!");
+            } else if (choice == 3) {
+                System.out.println("Balance: " + balance);
+            } else {
+                break;
+            }
+        }
+    }
+}
